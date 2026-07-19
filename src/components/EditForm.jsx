@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../client'
-import './CreateForm.css'
+import { colors } from '../constants'
+import './Form.css'
 import './EditForm.css'
-
-const COLORS = ['Red', 'Green', 'Blue', 'Purple', 'Yellow', 'Orange', 'Pink', 'Black', 'White', 'Brown', 'Cyan', 'Magenta']
 
 function EditForm(props) {
   const [crewmate, setCrewmate] = useState(null)
@@ -47,20 +46,25 @@ function EditForm(props) {
       return
     }
 
-    window.location = '/'
+    window.location = '/gallery'
   }
 
-  const deleteCrewmate = async (event) => {
-    await supabase
+  const deleteCrewmate = async () => {
+    const { error } = await supabase
       .from('crewmates')
       .delete()
       .eq('id', props.crewmateId)
 
-    window.location = '/'
+    if (error) {
+      setError(error.message)
+      return
+    }
+
+    window.location = '/gallery'
   }
 
   return (
-    <form className="createForm editForm" onSubmit={handleSubmit}>
+    <form className="pageCenter editForm" onSubmit={handleSubmit}>
       <h1>Update a Crewmate</h1>
       <h2>Current Crewmate Info:</h2>
 
@@ -74,9 +78,10 @@ function EditForm(props) {
 
       <div className="formContainer">
         <div className="formCard nameForm">
-          <label htmlFor="name">Name:</label>
+          <label className="formLabel" htmlFor="name">Name:</label>
           <input
             id="name"
+            className="formInput"
             type="text"
             placeholder="Enter crewmate's name"
             value={name}
@@ -85,9 +90,10 @@ function EditForm(props) {
         </div>
 
         <div className="formCard speedForm">
-          <label htmlFor="speed">Speed (mph):</label>
+          <label className="formLabel" htmlFor="speed">Speed (mph):</label>
           <input
             id="speed"
+            className="formInput"
             type="number"
             placeholder="Enter speed in mph"
             value={speed}
@@ -96,8 +102,8 @@ function EditForm(props) {
         </div>
 
         <div className="formCard colorPicker">
-          <span className="formCard-title">Color:</span>
-          {COLORS.map((c) => (
+          <span className="formTitle">Color:</span>
+          {colors.map((c) => (
             <label key={c} className="colorOption">
               <input
                 type="radio"
@@ -113,8 +119,8 @@ function EditForm(props) {
       </div>
 
       <div className="formActions">
-        <button type="submit" className="submitBtn">Update Crewmate</button>
-        <button type="button" className="deleteBtn" onClick={deleteCrewmate}>Delete Crewmate</button>
+        <button type="submit" className="formButton submitButton">Update Crewmate</button>
+        <button type="button" className="formButton deleteButton" onClick={deleteCrewmate}>Delete Crewmate</button>
       </div>
     </form>
   )

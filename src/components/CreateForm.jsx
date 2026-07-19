@@ -1,8 +1,8 @@
 import { useState } from 'react'
 import { supabase } from '../client'
+import { colors } from '../constants'
+import './Form.css'
 import './CreateForm.css'
-
-const COLORS = ['Red', 'Green', 'Blue', 'Purple', 'Yellow', 'Orange', 'Pink', 'Black', 'White', 'Brown', 'Cyan', 'Magenta']
 
 function CreateForm() {
   const [name, setName] = useState('')
@@ -12,23 +12,23 @@ function CreateForm() {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    console.log({ name, speed, color })
     await supabase
         .from('crewmates')
         .insert({name: name, speed: speed, color: color})
         .select()
-    window.location = '/' //maybe redirect to new details page in the future
+    window.location = '/gallery' 
   }
 
   return (
-    <form className="createForm" onSubmit={handleSubmit}>
+    <form className="pageCenter createForm" onSubmit={handleSubmit}>
       <h1>Create a New Crewmate</h1>
 
       <div className="formContainer">
         <div className="formCard nameForm">
-          <label htmlFor="name">Name:</label>
+          <label className="formLabel" htmlFor="name">Name:</label>
           <input
             id="name"
+            className="formInput"
             type="text"
             placeholder="Enter crewmate's name"
             value={name}
@@ -37,9 +37,10 @@ function CreateForm() {
         </div>
 
         <div className="formCard speedForm">
-          <label htmlFor="speed">Speed (mph):</label>
+          <label className="formLabel" htmlFor="speed">Speed (mph):</label>
           <input
             id="speed"
+            className="formInput"
             type="number"
             placeholder="Enter speed in mph"
             value={speed}
@@ -48,8 +49,8 @@ function CreateForm() {
         </div>
 
         <div className="formCard colorPicker">
-          <span className="formCard-title">Color:</span>
-          {COLORS.map((c) => (
+          <span className="formTitle">Color:</span>
+          {colors.map((c) => (
             <label key={c} className="colorOption">
               <input
                 type="radio"
@@ -64,7 +65,7 @@ function CreateForm() {
         </div>
       </div>
 
-      <button type="submit" className="submitBtn">Create Crewmate</button>
+      <button type="submit" className="formButton submitButton">Create Crewmate</button>
     </form>
   )
 }

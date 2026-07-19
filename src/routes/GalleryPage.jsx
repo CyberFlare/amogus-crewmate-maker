@@ -16,27 +16,26 @@ function GalleryPage() {
       .from('crewmates')
       .select()
       .order('created_at', { ascending: false })
-      .limit(20)
 
     if (error) {
       setError(error.message)
       return
     }
 
-    setCrewmates(data ?? [])
+    setCrewmates(data || [])
   }
 
   return (
     <div className="gallery">
       <h1>Crewmate Gallery</h1>
 
-      {error && <p className="gallery-error">Could not load crewmates: {error}</p>}
+      {error && <p className="galleryError">Could not load crewmates: {error}</p>}
 
       {!error && crewmates.length === 0 && (
-        <p className="gallery-empty">No crewmates added yet!</p>
+        <p className="galleryEmpty">No crewmates added yet!</p>
       )}
 
-      <div className="gallery-grid">
+      <div className="galleryGrid">
         {crewmates.map((mate) => (
           <CrewmateCard
             key={mate.id}

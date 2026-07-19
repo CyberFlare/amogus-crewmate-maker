@@ -1,14 +1,13 @@
-.editForm h1 {
-  margin-bottom: -1rem;
+.editForm {
+  gap: 1rem;
 }
 
 .editForm h2 {
   margin: 0;
   font-size: 1.25rem;
-  margin-bottom: -1.25rem;
 }
 
-.editForm > p {
+.editForm p {
   margin: 0;
 }
 
@@ -17,18 +16,10 @@
   gap: 1rem;
 }
 
-.deleteBtn {
-  padding: 0.6rem 1.5rem;
-  border: none;
-  border-radius: 6px;
+.deleteButton {
   background: #7a2b2b;
-  color: #f2f2f2;
-  font-family: inherit;
-  font-size: 1rem;
-  font-weight: 700;
-  cursor: pointer;
 }
 
-.deleteBtn:hover {
+.deleteButton:hover {
   background: #9a3535;
 }
