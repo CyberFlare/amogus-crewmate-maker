@@ -1,0 +1,27 @@
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  height: 100vh;
+  width: 200px;
+  box-sizing: border-box;
+
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  padding: 2rem 1.5rem;
+
+  background: #5a5a5d;
+}
+
+.navbar a {
+  color: #f2f2f2;
+  text-decoration: none;
+  font-size: 1.05rem;
+  font-weight: 400;
+  letter-spacing: 0.01em;
+}
+
+.navbar a:hover {
+  color: #fff;
+}

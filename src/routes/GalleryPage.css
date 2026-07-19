@@ -1,0 +1,32 @@
+.gallery {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  padding: 2rem 0;
+}
+
+.gallery h1 {
+  font-size: 3rem;
+  margin: 0;
+}
+
+.gallery-empty {
+  font-size: 1.5rem;
+  color: #b8b8b8;
+  margin: 0;
+}
+
+.gallery-error {
+  font-size: 1.25rem;
+  color: #ff6b6b;
+  margin: 0;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  gap: 1.5rem;
+}
