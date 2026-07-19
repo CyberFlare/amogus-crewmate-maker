@@ -40,6 +40,7 @@ function GalleryPage() {
         {crewmates.map((mate) => (
           <CrewmateCard
             key={mate.id}
+            id={mate.id}
             name={mate.name}
             speed={mate.speed}
             color={mate.color}

@@ -19,6 +19,11 @@
   height: auto;
 }
 
+.formError {
+  color: #ff6b6b;
+  margin: 0;
+}
+
 .formContainer {
   display: flex;
   justify-content: center;

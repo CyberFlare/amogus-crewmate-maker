@@ -6,6 +6,8 @@ import Navbar from './components/Navbar.jsx'
 import HomePage from './HomePage.jsx'
 import CreatePage from './routes/CreatePage.jsx'
 import GalleryPage from './routes/GalleryPage.jsx'
+import EditPage from './routes/EditPage.jsx'
+import DetailsPage from './routes/DetailsPage.jsx'
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
@@ -16,6 +18,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="/" element={<HomePage />} />
           <Route path="/create" element={<CreatePage />} />
           <Route path="/gallery" element={<GalleryPage />} />
+          <Route path="/edit/:id" element={<EditPage />} />
+          <Route path="/details/:id" element={<DetailsPage />} />
         </Routes>
       </main>
     </BrowserRouter>

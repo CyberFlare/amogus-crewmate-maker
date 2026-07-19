@@ -1,3 +1,4 @@
+import { Link } from 'react-router'
 import anonomogus from '../assets/anonomogus.png'
 import './CrewmateCard.css'
 
@@ -25,7 +26,7 @@ function CrewmateCard(props) {
       <h2>Name: {props.name}</h2>
       <h2>Speed: {props.speed} mph</h2>
       <h2>Color: {props.color}</h2>
-      <button className="card-btn">Edit Crewmate</button>
+      <Link to={`/edit/${props.id}`} className="card-btn">Edit Crewmate</Link>
     </div>
   )
 }
